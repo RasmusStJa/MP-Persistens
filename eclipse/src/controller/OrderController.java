@@ -1,9 +1,5 @@
 package controller;
 
-import model.Customer;
-import model.OrderLineItem;
-import model.SaleOrder;
-import model.Product;
 
 public class OrderController {
     

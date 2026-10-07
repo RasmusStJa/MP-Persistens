@@ -2,7 +2,6 @@ package model;
 
 public class Product {
     
-	
     private int productNumber;
     private String name;
     private double price;
@@ -19,15 +18,20 @@ public class Product {
     }
 
    
-    public int getProductNumber() { return productNumber; }
+    public int getProductNumber() { 
+    	return productNumber; }
     
-    public String getName() { return name; }
+    public String getName() {
+    	return name; }
     
-    public double getPrice() { return price; }
+    public double getPrice() {
+    	return price; }
     
-    public int getAvailableQty() { return availableQty; }
+    public int getAvailableQty() {
+    	return availableQty; }
     
-    public int getReservedQty() { return reservedQty; }
+    public int getReservedQty() {
+    	return reservedQty; }
     
     public void setReservedQty(int q) {
         this.reservedQty = q;

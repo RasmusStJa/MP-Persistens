@@ -2,11 +2,11 @@ package model;
 
 public class Customer {
 	int customerId;
-	String name;
-	String address;
-	String phoneNo;
-	String email;
-	String type;
+	private String name;
+	private String address;
+	private String phoneNo;
+	private String email;
+	private String type;
 	
 	public final int getCustomerId() 	{ return customerId; 	}
 	public final String getName() 		{ return name; 			}
