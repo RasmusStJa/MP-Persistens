@@ -1,5 +1,5 @@
-drop table warehouse
 drop table stock
+drop table warehouse
 drop table price
 drop table gunReplica
 drop table equipment
