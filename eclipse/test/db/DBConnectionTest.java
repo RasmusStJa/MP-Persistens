@@ -17,6 +17,5 @@ class DBConnectionTest {
 			} catch (DataAccessException e) {
 				fail();
 			}
-			
 	}
 }

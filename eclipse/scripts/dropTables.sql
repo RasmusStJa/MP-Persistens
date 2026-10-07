@@ -1,0 +1,15 @@
+drop table stock
+drop table warehouse
+drop table price
+drop table gunReplica
+drop table equipment
+drop table clothing
+drop table supplier_Products
+drop table orderLineItem
+drop table product
+drop table supplier
+drop table invoice
+drop table freight
+drop table saleOrder
+drop table customer
+drop table zipcode
