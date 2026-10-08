@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -35,9 +34,10 @@ public class OrderController {
         Customer c = customerCtrl.findCustomer(phone);
         if (c != null && this.currentOrder != null) {
         	this.currentOrder.setCustomer(c);
-        }
-        if (c.getType() != null && c.getType().name().equalsIgnoreCase("CLUB")) {
-        	this.currentOrder.setDiscount(10.0);
+
+        	if (c.getType() != null && c.getType().name().equalsIgnoreCase("CLUB")) {
+            	this.currentOrder.setDiscount(10.0);
+        	}
         }
         return c;
     }
