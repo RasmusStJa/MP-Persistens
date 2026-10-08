@@ -69,7 +69,11 @@ public class Product {
 		if (!(o instanceof Product))
 			return false;
 		Product product = (Product) o;
-		return productNumber == product.productNumber && minStock == product.minStock && reservedStock == product.reservedStock && Objects.equals(name, product.name) && Objects.equals(type, product.type);
+		return productNumber == product.productNumber &&
+				minStock == product.minStock &&
+				reservedStock == product.reservedStock &&
+				Objects.equals(name, product.name) &&
+				Objects.equals(type, product.type);
 	}
 	
 	@Override
