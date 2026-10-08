@@ -50,11 +50,4 @@ public class CustomerDB implements CustomerDAO {
 		}
 		return e;
 	}
-
-	@Override
-	public void save(Customer c) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
