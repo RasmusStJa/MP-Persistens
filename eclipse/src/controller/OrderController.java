@@ -1,6 +1,7 @@
 package controller;
 
 
+import db.DataAccessException;
 import db.OrderDAO;
 import model.Customer;
 import model.OrderLineItem;
@@ -25,8 +26,8 @@ public class OrderController {
         return this.order;
     }
 
-    public Customer enterCustomerInfo(String phone, String email) {
-        Customer c = customerCtrl.findCustomer(phone, email);
+    public Customer enterCustomerInfo(String phone) throws DataAccessException {
+        Customer c = customerCtrl.findCustomer(phone);
         this.order.setCustomer(c);
         return c;
     }
