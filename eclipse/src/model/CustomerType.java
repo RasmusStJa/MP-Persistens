@@ -11,4 +11,13 @@ public enum CustomerType {
 			case CLUB -> "Club";
 		};
 	}
+	
+	public static CustomerType toType(String t) {
+		return switch (t) {
+			case "Private" -> PRIVATE; 
+			case "Club" -> CLUB;
+		default -> throw new IllegalArgumentException("Unexpected value: " + t); 
+		};
+	}
+
 }

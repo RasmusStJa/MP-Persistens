@@ -3,7 +3,7 @@ package db;
 import model.Customer;
 
 public interface CustomerDAO {
-    Customer findByPhoneOrEmail(String phone, String email);
+    Customer findByPhone(String phone) throws DataAccessException;
 	void save(Customer c);
 	
 }
