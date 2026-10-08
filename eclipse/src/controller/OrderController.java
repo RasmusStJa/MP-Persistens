@@ -8,14 +8,12 @@ import model.Product;
 import model.SaleOrder;
 
 public class OrderController {
-    
-    
     private SaleOrder order;
     private CustomerController customerCtrl;
     private ProductController productCtrl;
     private OrderDAO orderDAO;
-
-   
+    
+    
     public OrderController(CustomerController cc, ProductController pc, OrderDAO dao) {
         this.customerCtrl = cc;
         this.productCtrl = pc;
@@ -48,7 +46,7 @@ public class OrderController {
     
     public SaleOrder confirmOrder() {
         this.order.setStatus("CONFIRMED");
-        this.order.setOrderNo(555); // 
+        this.order.setOrderNo(67);
         orderDAO.save(this.order);
         return this.order;
     }

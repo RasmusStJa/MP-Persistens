@@ -4,4 +4,6 @@ import model.Customer;
 
 public interface CustomerDAO {
     Customer findByPhoneOrEmail(String phone, String email);
+	void save(Customer c);
+	
 }
