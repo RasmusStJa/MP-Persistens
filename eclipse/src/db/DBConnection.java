@@ -30,11 +30,11 @@ public class DBConnection {
 			connection = DriverManager.getConnection(connectionString);
 		} catch (SQLException e) {
 			throw new DataAccessException(
-					String.format("Could not connect to database %s@%s:%d user %s. Connection string was: %s", DB_NAME,
-							SERVER_ADDRESS, SERVER_PORT, USERNAME,
-							connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "...."),
-					e);
-
+				String.format("Could not connect to database %s@%s:%d user %s. Connection string was: %s", DB_NAME,
+						SERVER_ADDRESS, SERVER_PORT, USERNAME,
+						connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "...."),
+				e
+			);
 		}
 	}
 
