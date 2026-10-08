@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 import model.*;
 
 public class CustomerDB implements CustomerDAO {
@@ -37,7 +38,7 @@ public class CustomerDB implements CustomerDAO {
 
 	}
 	
-	private Customer buildObject(ResultSet rs) throws DataAcessException {
+	private Customer buildObject(ResultSet rs) throws DataAccessException {
 		Customer e = null;
 		try {
 			if(rs.next()) {
