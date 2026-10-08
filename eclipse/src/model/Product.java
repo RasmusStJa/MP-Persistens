@@ -57,10 +57,9 @@ public class Product {
 		return reservedStock;
 	}
 
-//	public void setReservedStock(int q) {
-//        this.reservedStock = q;
-//        this.availableQty = this.availableQty - q;
-//    }
+	public void setReservedStock(int q) {
+        this.reservedStock = this.reservedStock - q;
+    }
 	
 	@Override
 	public boolean equals(Object o) {
