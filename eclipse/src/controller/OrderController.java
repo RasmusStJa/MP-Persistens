@@ -22,13 +22,13 @@ public class OrderController {
     }
 
     public SaleOrder createOrder() {
-        this.order = new SaleOrder();
-        return this.order;
+        order = new SaleOrder();
+        return order;
     }
 
     public Customer enterCustomerInfo(String phone) throws DataAccessException {
         Customer c = customerCtrl.findCustomer(phone);
-        this.order.setCustomer(c);
+        order.setCustomer(c);
         return c;
     }
 
@@ -38,17 +38,16 @@ public class OrderController {
 
     public OrderLineItem enterQuantity(int qty) {
         Product p = productCtrl.findProduct(123); 
-        OrderLineItem item = this.order.addOrderLine(p, qty);
+        OrderLineItem item = order.addItem(p, qty);
         productCtrl.reserve(p, qty);
-        this.order.applyDiscount();
-        this.order.getTotal();
+        order.getTotal();
         return item;
     }
     
     public SaleOrder confirmOrder() {
-        this.order.setStatus("CONFIRMED");
-        this.order.setOrderNo(67);
-        orderDAO.save(this.order);
-        return this.order;
+        order.setStatus("CONFIRMED");
+        order.setOrderNo(67);
+        orderDAO.save(order);
+        return order;
     }
 }
