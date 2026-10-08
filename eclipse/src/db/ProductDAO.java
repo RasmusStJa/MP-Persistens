@@ -1,9 +1,13 @@
 package db;
 
 import model.Product;
+import model.Price;
+import java.util.List;
 
 public interface ProductDAO {
     Product findByProductNumber(int productNumber);
-    void updateReservedQty(Product p);
+    Price findCurrentPriceByProductNumber(int productNumber);
+    boolean updateReservedStock(Product p);
+    List<Product> findByProductNumberByList(int productNumber);
     
 }
