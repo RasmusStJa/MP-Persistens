@@ -13,16 +13,13 @@ public class CustomerDB implements CustomerDAO {
 			"select phoneno, name, address, zipcode from Zipcode, type, where phoneno = ?";
 	
 	private PreparedStatement selectByPnum;
-
-	
 	
 	public CustomerDB() throws DataAccessException {
 		try {
 			selectByPnum = DBConnection.getInstance().getConnection().prepareStatement(SELECT_ALL_PNUM);
-	} catch (SQLException e) {
-		throw new DataAccessException("Could not prepare statements",e);
-	}
-		
+		} catch (SQLException e) {
+			throw new DataAccessException("Could not prepare statements",e);
+		}
 	}
 
 	@Override
@@ -35,7 +32,6 @@ public class CustomerDB implements CustomerDAO {
 		} catch (SQLException e) {
 			throw new DataAccessException("Could not bind param or select customer by phonenumber", e);
 		}
-
 	}
 	
 	private Customer buildObject(ResultSet rs) throws DataAccessException {
@@ -48,10 +44,9 @@ public class CustomerDB implements CustomerDAO {
 						rs.getString("address"),
 						new Zipcode(rs.getInt("zipcode"), ""),
 						CustomerType.toType(rs.getString("type")));
-						
 			}
 		} catch (SQLException e1) {
-			throw new DataAccessException("Could not read result set for employee", e1);
+				throw new DataAccessException("Could not read result set for employee", e1);
 		}
 		return e;
 	}
