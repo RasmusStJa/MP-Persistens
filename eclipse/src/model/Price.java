@@ -13,6 +13,11 @@ public class Price {
 		this.timestamp = timestamp;
 		this.price = price;
 	}
+	
+	public Price(LocalDateTime timestamp, double price) {
+		this.timestamp = timestamp;
+		this.price = price;
+	}
 
 	public Product getProduct() {
 		return product;
