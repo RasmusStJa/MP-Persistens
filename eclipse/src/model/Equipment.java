@@ -15,8 +15,6 @@ public class Equipment extends Product {
 	public Equipment(int productNumber) {
 		super(productNumber);
 	}
-
-	
 	
 	public String getMaterial() {
 		return material;

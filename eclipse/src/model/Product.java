@@ -45,8 +45,6 @@ public class Product {
 		this.minStock = minStock;
 	}
 
-
-
 	public String getType() {
 		return type;
 	}
