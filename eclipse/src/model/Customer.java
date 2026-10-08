@@ -18,13 +18,17 @@ public class Customer {
 //	public final String getType() 		{ return type; 			}
 	
 	public Customer(String phoneno, String name, String address, Zipcode zipcode, CustomerType type) {
-		this.phoneno 	= phoneno;
+		this(phoneno);
 		this.name 		= name;
 		this.address 	= address;
 		this.zipcode 	= zipcode;
 		this.type 		= type;
 	}
 
+	public Customer(String phoneno) {
+		this.phoneno = phoneno;
+	}
+	
 	public String getPhoneno() {
 		return phoneno;
 	}

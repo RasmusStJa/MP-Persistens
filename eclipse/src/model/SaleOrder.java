@@ -9,35 +9,54 @@ public class SaleOrder {
     private int orderNo;
     private LocalDate date;
     private String status;
+    private LocalDate deliveryDate;
     private double discount;
     private Customer customer;
     private List<OrderLineItem> lines;
     private Invoice invoice;
     
-    public SaleOrder(final LocalDate date, final String status, final double discout, final ArrayList<OrderLineItem> lines) {
+    public SaleOrder(final LocalDate date, final String status, final double discount, final ArrayList<OrderLineItem> lines) {
         setDate(date);
         setStatus(status);
         setDiscount(discount);
         setLines(lines);
     }
     
+    public SaleOrder(int orderNo, LocalDate date, String status, LocalDate deliveryDate, double discount, Customer customer) {
+    	this.orderNo = orderNo;
+    	this.date = date;
+    	this.status = status;
+    	this.deliveryDate = deliveryDate;
+    	this.discount = discount;
+    	this.customer = customer;
+    	this.lines = new ArrayList<>();
+    }
+    
 	public void setDate(final LocalDate date) 				{ this.date = date; 					}
-	public void setDiscount(double discount) 				{ this.discount = -Math.abs(discount); 	}
-	public void addItem(final OrderLineItem OLI) 			{ lines.add(OLI); 						}
-	public void setLines(final List<OrderLineItem> lines) 	{ this.lines = lines; 					}
+	public void setDeliveryDate(final LocalDate deliveryDate) { this.deliveryDate = deliveryDate; 	}
+	public void setDiscount(double discount) 				{ this.discount = Math.abs(discount); 	}
+	public void addItem(final OrderLineItem OLI) 			{ if (OLI != null) {lines.add(OLI);} 	}
 	public void setCustomer(final Customer c) 				{ customer = c; 						}
     public void setStatus(final String s) 					{ status = s; 							}
     public void setOrderNo(final int n) 					{ orderNo = n; 							}
     public void setInvoice(final Invoice invoice)			{ this.invoice = invoice;				}
     
-    public int getOrderNo() 				{ return orderNo; 	}
-    public List<OrderLineItem> getLines() 	{ return lines; 	}
-    public LocalDate getDate() 				{ return date; 		}
-	public String getStatus() 				{ return status; 	}
-	public double getDiscount() 			{ return discount; 	}
-	public Customer getCustomer() 			{ return customer; 	}
-    public Invoice getInvoice()				{ return invoice;	}
+    public int getOrderNo() 				{ return orderNo; 	  			}
+    public List<OrderLineItem> getLines() 	{ return new ArrayList<>(lines);}
+    public LocalDate getDate() 				{ return date; 		  			}
+	public String getStatus() 				{ return status; 	   			}
+    public LocalDate getDeliveryDate()		{ return deliveryDate;			}
+	public double getDiscount() 			{ return discount; 	  			}
+	public Customer getCustomer() 			{ return customer; 	  			}
+    public Invoice getInvoice()				{ return invoice;	  			}
 	
+	public void setLines(final List<OrderLineItem> lines) {
+		this.lines = new ArrayList<>();
+		if (lines != null) {
+			this.lines.addAll(lines);
+		}
+	}
+    
 	public double getSum() {
 		double sum = 0;
         for (final OrderLineItem line : lines) { sum += line.getSubtotal(); }

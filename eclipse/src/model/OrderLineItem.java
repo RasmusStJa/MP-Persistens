@@ -5,10 +5,15 @@ public class OrderLineItem {
     private double unitPrice;
     private Product product;
 
-    public OrderLineItem(Product p, int qty, int unitPrice) {
+    public OrderLineItem(int qty, Product p, double unitPrice) {
         product = p;
         quantity = qty;
         this.unitPrice = unitPrice; 
+    }
+    
+    public OrderLineItem(int quantity, Product product) {
+    	this.quantity = quantity;
+    	this.product = product;
     }
  
     public int getQuantity() {

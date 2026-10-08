@@ -8,6 +8,7 @@ public class Invoice {
 	private LocalDate dueDate;
 	private LocalDate paymentDate;
 	private int overDueCount;
+	private SaleOrder order;
 	
 	public int getInvoiceNo() 			{ return invoiceNo; 	}
 	public LocalDate getDueDate() 		{ return dueDate; 		}
@@ -21,9 +22,17 @@ public class Invoice {
 		overDueCount = (int)ChronoUnit.DAYS.between(dueDate, paymentDate);
 	}
 
-	public Invoice(int invoiceNo, LocalDate dueDate) {
+	public Invoice(int invoiceNo, LocalDate dueDate, SaleOrder order) {
 		setInvoiceNo(invoiceNo);
 		setDueDate(dueDate);
+		this.order = order;
+	}
+	
+	public double getAmountToPay() {
+		if (order != null) {
+			return order.getTotal();
+		}
+		return 0.0;
 	}
 	
 	@Override
