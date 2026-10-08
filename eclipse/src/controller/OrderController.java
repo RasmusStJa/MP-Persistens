@@ -1,6 +1,9 @@
 package controller;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import db.OrderDAO;
 import model.Customer;
 import model.OrderLineItem;
@@ -21,7 +24,7 @@ public class OrderController {
     }
 
     public SaleOrder createOrder() {
-        this.order = new SaleOrder();
+        this.order = new SaleOrder(LocalDate.now(), "OPEN", 0.0, new ArrayList<OrderLineItem>();
         return this.order;
     }
 
