@@ -2,14 +2,12 @@ package model;
 
 import java.util.Objects;
 
-public class Product {
-    
+public class Product { 
 	private int productNumber;
 	private String name;
 	private int minStock;
 	private int reservedStock;
 	private String type;
-
     
     public Product(int productNumber, String name, int minStock, int reservedStock, String type) {
     	this(productNumber);
@@ -27,55 +25,37 @@ public class Product {
 		return productNumber;
 	}
 
-
-
 	public void setProductNumber(int productNumber) {
 		this.productNumber = productNumber;
 	}
-
-
 
 	public String getName() {
 		return name;
 	}
 
-
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public int getMinStock() {
 		return minStock;
 	}
 
-
-
 	public void setMinStock(int minStock) {
 		this.minStock = minStock;
 	}
-
-
 
 	public String getType() {
 		return type;
 	}
 
-
-
 	public void setType(String type) {
 		this.type = type;
 	}
 
-
-
 	public int getReservedStock() {
 		return reservedStock;
 	}
-
-
 
 //	public void setReservedStock(int q) {
 //        this.reservedStock = q;

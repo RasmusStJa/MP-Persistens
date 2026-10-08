@@ -11,17 +11,18 @@ public class Zipcode {
 		this.zipcode = zipcode;
 		this.city = city;
 	}
-	
+	/*
+	 *Removed bc there's no way to get a city only from a zipcode
 	public Zipcode(int zipcode) {
-		this.zipcode = zipcode;
+		setZipcode(zipcode);
 	}
-
+	*/
 	public int getZipcode() {
 		return zipcode;
 	}
 
 	public void setZipcode(int zipcode) {
-		this.zipcode = zipcode;
+		this.zipcode = Math.abs(zipcode);
 	}
 
 	public String getCity() {
