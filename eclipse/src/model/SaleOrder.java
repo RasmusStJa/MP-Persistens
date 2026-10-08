@@ -20,12 +20,6 @@ public class SaleOrder {
         lines = new ArrayList<OrderLineItem>();
     }
     
-    public OrderLineItem addOrderLine(Product p, int qty, int price) {
-        OrderLineItem newItem = new OrderLineItem(p, qty, price);
-        this.lines.add(newItem);
-        return newItem;
-    }
-    
 	public void setDate(final LocalDate date) 				{ this.date = date; 					}
 	public void setDiscountGiven(double discount) 			{ this.discount = -Math.abs(discount); 	}
 	public void addItem(final OrderLineItem OLI) 			{ lines.add(OLI); 						}
