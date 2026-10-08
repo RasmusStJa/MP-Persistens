@@ -45,7 +45,9 @@ public class Price {
 		if (!(o instanceof Price))
 			return false;
 		Price price1 = (Price) o;
-		return Double.compare(price1.price, price) == 0 && Objects.equals(product, price1.product) && Objects.equals(timestamp, price1.timestamp);
+		return Double.compare(price1.price, price) == 0 &&
+				Objects.equals(product, price1.product) &&
+				Objects.equals(timestamp, price1.timestamp);
 	}
 	
 	@Override

@@ -53,7 +53,9 @@ public class Warehouse {
 		if (!(o instanceof Warehouse))
 			return false;
 		Warehouse warehouse = (Warehouse) o;
-		return number == warehouse.number && Objects.equals(name, warehouse.name) && Objects.equals(description, warehouse.description);
+		return number == warehouse.number &&
+				Objects.equals(name, warehouse.name) &&
+				Objects.equals(description, warehouse.description);
 	}
 	
 	@Override
