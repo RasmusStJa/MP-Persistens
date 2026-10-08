@@ -6,69 +6,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SaleOrder {
-    
     private int orderNo;
     private LocalDate date;
     private String status;
-    private double discountGiven; 
+    private double discount;
     private Customer customer;
     private List<OrderLineItem> lines;
-
-   
-    public SaleOrder() {
-        this.date = LocalDate.now(); 
-        this.status = "OPEN";       
-        this.discountGiven = 0.0;   
-        this.lines = new ArrayList<>();
-    }
-
     
-    public void setCustomer(Customer c) {
-        this.customer = c;
+    public SaleOrder() {
+        date = LocalDate.now(); 
+        status = "OPEN";       
+        discount = 0.0;   
+        lines = new ArrayList<OrderLineItem>();
     }
-
-
-    public OrderLineItem addOrderLine(Product p, int qty) {
-        OrderLineItem newItem = new OrderLineItem(p, qty);
+    
+    public OrderLineItem addOrderLine(Product p, int qty, int price) {
+        OrderLineItem newItem = new OrderLineItem(p, qty, price);
         this.lines.add(newItem);
         return newItem;
     }
-
+    
+	public void setDate(final LocalDate date) 				{ this.date = date; 					}
+	public void setDiscountGiven(double discount) 			{ this.discount = -Math.abs(discount); 	}
+	public void addItem(final OrderLineItem OLI) 			{ lines.add(OLI); 						}
+	public void setLines(final List<OrderLineItem> lines) 	{ this.lines = lines; 					}
+	public void setCustomer(final Customer c) 				{ customer = c; 						}
+    public void setStatus(final String s) 					{ status = s; 							}
+    public void setOrderNo(final int n) 					{ orderNo = n; 							}
+    
+    public int getOrderNo() 				{ return orderNo; 	}
+    public List<OrderLineItem> getLines() 	{ return lines; 	}
+    public final LocalDate getDate() 		{ return date; 		}
+	public final String getStatus() 		{ return status; 	}
+	public final double getDiscountGiven() 	{ return discount; 	}
+	public final Customer getCustomer() 	{ return customer; 	}
+    
+	public double getSum() {
+		double sum = 0;
+        for (final OrderLineItem line : lines) { sum += line.getSubtotal(); }
+        return sum;
+	}
+	
+	public double getDiscountOnTotal() {
+		return getTotal() - discount;
+	}
+	
     public double getTotal() {
-        double sum = 0;
-        for (OrderLineItem line : lines) {
-            sum += line.getSubtotal();
-        }
-        return sum + this.discountGiven;
-    }
-
-    public void applyDiscount() {
-        double currentSubtotal = 0;
-        for (OrderLineItem line : lines) {
-            currentSubtotal += line.getSubtotal();
-      
-        }
+        double sum = getSum();
         
-        if (currentSubtotal > 1500) { 
-            this.discountGiven = currentSubtotal * 0.10;
-        } else {
-            this.discountGiven = 0.0;
-        }
-    }
-
-    public void setStatus(String s) {
-        this.status = s;
-    }
-
-    public int getOrderNo() {
-        return orderNo;
-    }
-
-    public void setOrderNo(int n) {
-        this.orderNo = n;
-    }
-
-    public List<OrderLineItem> getLines() {
-        return lines;
+        sum -= discount;
+        if (sum < 0) { return 0; }
+        return sum;
     }
 }

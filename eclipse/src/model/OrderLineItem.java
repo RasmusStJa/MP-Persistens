@@ -1,16 +1,14 @@
 package model;
 
 public class OrderLineItem {
-    
-
     private int quantity;
     private double unitPrice;
     private Product product;
 
-    public OrderLineItem(Product p, int qty) {
-        this.product = p;
-        this.quantity = qty;
-        this.unitPrice = p.getPrice(); 
+    public OrderLineItem(Product p, int qty, int unitPrice) {
+        product = p;
+        quantity = qty;
+        this.unitPrice = unitPrice; 
     }
  
     public int getQuantity() {
@@ -26,6 +24,6 @@ public class OrderLineItem {
     }
 
     public double getSubtotal() {
-        return quantity * unitPrice;
+        return getQuantity() * getUnitPrice();
     }
 }
