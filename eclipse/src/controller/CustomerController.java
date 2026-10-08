@@ -2,6 +2,7 @@ package controller;
 
 
 import db.CustomerDAO;
+import db.DataAccessException;
 import model.Customer;
 
 public class CustomerController {
@@ -12,7 +13,7 @@ public class CustomerController {
         this.customerDAO = customerDAO;
     }
 
-    public Customer findCustomer(String phone, String email) {
-        return customerDAO.findByPhoneOrEmail(phone, email);
+    public Customer findCustomer(String phone) throws DataAccessException {
+        return customerDAO.findByPhone(phone);
     }
 }
