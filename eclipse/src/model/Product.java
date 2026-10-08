@@ -1,40 +1,105 @@
 package model;
 
+import java.util.Objects;
+
 public class Product {
     
-    private int productNumber;
-    private String name;
-    private double price;
-    private int availableQty;
-    private int reservedQty;
+	private int productNumber;
+	private String name;
+	private int minStock;
+	private int reservedStock;
+	private String type;
 
     
-    public Product(int productNumber, String name, double price, int availableQty) {
-        this.productNumber = productNumber;
-        this.name = name;
-        this.price = price;
-        this.availableQty = availableQty;
-        this.reservedQty = 0;
+    public Product(int productNumber, String name, int minStock, int reservedStock, String type) {
+    	this(productNumber);
+    	this.name = name;
+    	this.minStock = minStock;
+    	this.reservedStock = reservedStock;
+    	this.type = type;
     }
 
-   
-    public int getProductNumber() { 
-    	return productNumber; }
-    
-    public String getName() {
-    	return name; }
-    
-    public double getPrice() {
-    	return price; }
-    
-    public int getAvailableQty() {
-    	return availableQty; }
-    
-    public int getReservedQty() {
-    	return reservedQty; }
-    
-    public void setReservedQty(int q) {
-        this.reservedQty = q;
-        this.availableQty = this.availableQty - q;
+    public Product(int productNumber) {
+    	this.productNumber = productNumber;
     }
+    
+    public int getProductNumber() {
+		return productNumber;
+	}
+
+
+
+	public void setProductNumber(int productNumber) {
+		this.productNumber = productNumber;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public int getMinStock() {
+		return minStock;
+	}
+
+
+
+	public void setMinStock(int minStock) {
+		this.minStock = minStock;
+	}
+
+
+
+	public String getType() {
+		return type;
+	}
+
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+
+	public int getReservedStock() {
+		return reservedStock;
+	}
+
+
+
+//	public void setReservedStock(int q) {
+//        this.reservedStock = q;
+//        this.availableQty = this.availableQty - q;
+//    }
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof Product))
+			return false;
+		Product product = (Product) o;
+		return productNumber == product.productNumber && minStock == product.minStock && reservedStock == product.reservedStock && Objects.equals(name, product.name) && Objects.equals(type, product.type);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(productNumber, name, minStock, reservedStock, type);
+	}
+	
+	@Override
+	public String toString() {
+		return "Product [productNumber=" + productNumber + ", name=" + name + ", minStock=" + minStock + ", reservedStock=" + reservedStock + ", type=" + type + "]";
+	}
+	
 }
