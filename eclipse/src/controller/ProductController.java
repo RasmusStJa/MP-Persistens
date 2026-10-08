@@ -17,7 +17,7 @@ public class ProductController {
     }
 
     public boolean reserve(Product p, int qty) {
-        p.setReservedQty(qty);
+        p.setReservedStock(qty);
         productDAO.updateReservedQty(p);
         return true;
     }
