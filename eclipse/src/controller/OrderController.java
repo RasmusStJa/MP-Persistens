@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import db.DataAccessException;
 import db.OrderDAO;
 import model.Customer;
+import model.CustomerType;
 import model.OrderLineItem;
 import model.Price;
 import model.Product;
@@ -31,16 +32,25 @@ public class OrderController {
     }
 
     public Customer enterCustomerInfo(String phone) throws DataAccessException {
-        Customer c = customerCtrl.findCustomer(phone);
-        if (c != null && this.currentOrder != null) {
-        	this.currentOrder.setCustomer(c);
+        try {
+          Customer customer = customerCtrl.findCustomer(phone);
+          System.out.println("1. Kundesøgning færdig. Fundet kunde: " + (customer != null ? customer.getName() : "NULL"));
 
-        	if (c.getType() != null && c.getType().name().equalsIgnoreCase("CLUB")) {
-            	this.currentOrder.setDiscount(10.0);
-        	}
-        }
-        return c;
-    }
+          if (customer != null && this.currentOrder != null) {
+            this.currentOrder.setCustomer(customer);
+            System.out.println("2. Kunde sat på ordre.");
+            if (customer.getType() == CustomerType.CLUB) {
+              this.currentOrder.setDiscount(10.0);
+              System.out.println("3. Rabat sat.");
+            }
+          }
+          return customer;
+        } catch (Exception e) {
+          System.err.println("❌ FEJL I enterCustomerInfo:");
+          e.printStackTrace();
+          throw e;
+       }
+     }
 
     public Product enterProductNumber(int productNumber) throws DataAccessException {
         this.currentProduct = productCtrl.findProduct(productNumber);

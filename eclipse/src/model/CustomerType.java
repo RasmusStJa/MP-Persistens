@@ -1,23 +1,22 @@
 package model;
 
 public enum CustomerType {
-	PRIVATE,
-	CLUB;
+	  PRIVATE,
+	  CLUB;
 	
-	@Override
-	public String toString() {
-		return switch (this) {
-			case PRIVATE -> "Private";
-			case CLUB -> "Club";
-		};
+	public static CustomerType toType(String type) {
+	    if (type == null || type.trim().isEmpty()) {
+	    	return PRIVATE;
+	    }
+	    
+	      switch (type.trim().toUpperCase()) {
+	      case "PRIVATE":
+	        return PRIVATE;
+	      case "CLUB":
+	        return CLUB;
+	      default:
+	        throw new IllegalArgumentException("Unexpected value: " + type);
+	      }
+	   }
 	}
 	
-	public static CustomerType toType(String t) {
-		return switch (t) {
-			case "Private" -> PRIVATE; 
-			case "Club" -> CLUB;
-		default -> throw new IllegalArgumentException("Unexpected value: " + t); 
-		};
-	}
-
-}
