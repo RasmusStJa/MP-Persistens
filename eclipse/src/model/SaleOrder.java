@@ -42,7 +42,7 @@ public class SaleOrder {
     public void setInvoice(final Invoice invoice)			{ this.invoice = invoice;				}
     
     public int getOrderNo() 				{ return orderNo; 	  			}
-    public List<OrderLineItem> getLines() 	{ return new ArrayList<>(lines);}
+    public List<OrderLineItem> getLines() 	{ return lines;					}
     public LocalDate getDate() 				{ return date; 		  			}
 	public String getStatus() 				{ return status; 	   			}
     public LocalDate getDeliveryDate()		{ return deliveryDate;			}
@@ -54,6 +54,15 @@ public class SaleOrder {
 		this.lines = new ArrayList<>();
 		if (lines != null) {
 			this.lines.addAll(lines);
+		}
+	}
+	
+	public void removeLine(final OrderLineItem line) {
+		for (final OrderLineItem l : lines) {
+			if (l.equals(line)) {
+				lines.remove(l);
+				break;
+			}
 		}
 	}
     
