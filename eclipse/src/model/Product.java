@@ -58,7 +58,7 @@ public class Product {
 	}
 
 	public void setReservedStock(int q) {
-        this.reservedStock = this.reservedStock - q;
+        this.reservedStock = q;
     }
 	
 	@Override

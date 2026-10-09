@@ -52,8 +52,8 @@ public class OrderController {
         if (this.currentProduct == null || this.currentOrder == null) {
             return null;
         }
-        if (qty <= 0) {
-            throw new IllegalArgumentException("Quantity must be greater than 0");
+        if (qty < 0) {
+            throw new IllegalArgumentException("Quantity (" + qty + ") must be greater than 0");
         }
         if (qty > this.currentProduct.getReservedStock()) {
             throw new IllegalArgumentException("Quantity exceeds available stock");
@@ -83,4 +83,10 @@ public class OrderController {
     public SaleOrder getCurrentOrder() {
     	return this.currentOrder;
     }
+
+	@Override
+	public String toString() {
+		return "OrderController [currentOrder=" + currentOrder + ", customerCtrl=" + customerCtrl + ", productCtrl="
+				+ productCtrl + ", orderDAO=" + orderDAO + ", currentProduct=" + currentProduct + "]";
+	}
 }
