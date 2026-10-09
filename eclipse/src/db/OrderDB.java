@@ -45,10 +45,10 @@ public class OrderDB implements OrderDAO {
 			con.setAutoCommit(false);
 			
 			try (PreparedStatement psOrder = con.prepareStatement(INSERT_ORDER_Q, Statement.RETURN_GENERATED_KEYS)) {
-				psOrder.setString(1, o.getCustomer() != null ? o.getCustomer().getPhoneno() : null);
+				psOrder.setString(1, o.getCustomer() != null ? o.getCustomer().getPhoneno() : o.getCustomer().getPhoneno());
 				psOrder.setDate(2, o.getDate() != null ? Date.valueOf(o.getDate()) : Date.valueOf(LocalDate.now()));
 				psOrder.setString(3, o.getStatus());
-				psOrder.setDate(4, o.getDeliveryDate() != null ? Date.valueOf(o.getDeliveryDate()) : null);
+				psOrder.setDate(4, o.getDeliveryDate() != null ? Date.valueOf(o.getDeliveryDate()) : Date.valueOf(LocalDate.now().plusDays(3)));
 				psOrder.setDouble(5, o.getDiscount());
 				
 				psOrder.executeUpdate();
