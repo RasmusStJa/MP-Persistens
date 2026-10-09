@@ -38,10 +38,8 @@ public class Invoice {
 	}
 	
 	public double getAmountToPay() {
-		if (order != null) {
-			return order.getTotal();
-		}
-		return 0.0;
+		if (order == null) { return 0.0; }
+		return order.getTotal();
 	}
 	
 	@Override

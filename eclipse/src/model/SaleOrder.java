@@ -2,7 +2,7 @@ package model;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 public class SaleOrder {
@@ -15,7 +15,7 @@ public class SaleOrder {
     private List<OrderLineItem> lines;
     private Invoice invoice;
     
-    public SaleOrder(final LocalDate date, final String status, final double discount, final ArrayList<OrderLineItem> lines) {
+    public SaleOrder(final LocalDate date, final String status, final double discount, final List<OrderLineItem> lines) {
         setDate(date);
         setStatus(status);
         setDiscount(discount);
@@ -29,7 +29,6 @@ public class SaleOrder {
     	this.deliveryDate = deliveryDate;
     	this.discount = discount;
     	this.customer = customer;
-    	this.lines = new ArrayList<>();
     }
     
 	public void setDate(final LocalDate date) 				{ this.date = date; 					}
@@ -42,7 +41,7 @@ public class SaleOrder {
     public void setInvoice(final Invoice invoice)			{ this.invoice = invoice;				}
     
     public int getOrderNo() 				{ return orderNo; 	  			}
-    public List<OrderLineItem> getLines() 	{ return new ArrayList<>(lines);}
+    public List<OrderLineItem> getLines() 	{ return lines;					}
     public LocalDate getDate() 				{ return date; 		  			}
 	public String getStatus() 				{ return status; 	   			}
     public LocalDate getDeliveryDate()		{ return deliveryDate;			}
@@ -51,9 +50,16 @@ public class SaleOrder {
     public Invoice getInvoice()				{ return invoice;	  			}
 	
 	public void setLines(final List<OrderLineItem> lines) {
-		this.lines = new ArrayList<>();
-		if (lines != null) {
-			this.lines.addAll(lines);
+		if (lines == null) { return; }
+		this.lines = lines;
+	}
+	
+	public void removeLine(final OrderLineItem line) {
+		for (final OrderLineItem l : lines) {
+			if (l.equals(line)) {
+				lines.remove(l);
+				break;
+			}
 		}
 	}
     

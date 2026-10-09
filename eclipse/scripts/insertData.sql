@@ -34,7 +34,7 @@ insert into invoice (dueDate, paymentDate, orderNo_id) values
 
 -- Insert products
 insert into product (productNumber, name, minStock, reservedStock, type) values
-(1001, 'Stetson Cowboy Hat', 10, 2, 'Clothing'),
+(1001, 'Stetson Cowboy Hat', 10, 10, 'Clothing'),
 (1002, 'Læder Cowboystøvler', 5, 1, 'Clothing'),
 (1003, 'Texas Western Skjorte', 15, 3, 'Clothing'),
 (2001, 'Zippo Lighter Western', 20, 5, 'Equipment'),

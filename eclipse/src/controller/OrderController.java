@@ -59,17 +59,23 @@ public class OrderController {
     }
 
     public OrderLineItem enterQuantity(int qty) throws DataAccessException {
-        if (this.currentProduct == null || this.currentOrder == null || qty <= 0) {
-        	return null;
+        if (this.currentProduct == null || this.currentOrder == null) {
+            return null;
         }
-        
+        if (qty < 0) {
+            throw new IllegalArgumentException("Quantity (" + qty + ") must be greater than 0");
+        }
+        if (qty > this.currentProduct.getReservedStock()) {
+            throw new IllegalArgumentException("Quantity exceeds available stock");
+        }
+
         Price price = productCtrl.getCurrentPrice(this.currentProduct);
         double unitPrice = price != null ? price.getPrice() : 0.0;
-        
+
         OrderLineItem item = new OrderLineItem(qty, this.currentProduct, unitPrice);
         this.currentOrder.addItem(item);
         productCtrl.reserve(this.currentProduct, qty);
-        
+
         return item;
     }
     
@@ -87,4 +93,10 @@ public class OrderController {
     public SaleOrder getCurrentOrder() {
     	return this.currentOrder;
     }
+
+	@Override
+	public String toString() {
+		return "OrderController [currentOrder=" + currentOrder + ", customerCtrl=" + customerCtrl + ", productCtrl="
+				+ productCtrl + ", orderDAO=" + orderDAO + ", currentProduct=" + currentProduct + "]";
+	}
 }
