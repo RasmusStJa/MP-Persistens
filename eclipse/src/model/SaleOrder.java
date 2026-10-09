@@ -12,7 +12,7 @@ public class SaleOrder {
     private LocalDate deliveryDate;
     private double discount;
     private Customer customer;
-    private List<OrderLineItem> lines;
+    private ArrayList<OrderLineItem> lines;
     private Invoice invoice;
     
     public SaleOrder(final LocalDate date, final String status, final double discount, final ArrayList<OrderLineItem> lines) {
@@ -29,7 +29,7 @@ public class SaleOrder {
     	this.deliveryDate = deliveryDate;
     	this.discount = discount;
     	this.customer = customer;
-    	this.lines = new ArrayList<>();
+    	this.lines = new ArrayList<OrderLineItem>();
     }
     
 	public void setDate(final LocalDate date) 				{ this.date = date; 					}
@@ -50,11 +50,9 @@ public class SaleOrder {
 	public Customer getCustomer() 			{ return customer; 	  			}
     public Invoice getInvoice()				{ return invoice;	  			}
 	
-	public void setLines(final List<OrderLineItem> lines) {
-		this.lines = new ArrayList<>();
-		if (lines != null) {
-			this.lines.addAll(lines);
-		}
+	public void setLines(final ArrayList<OrderLineItem> lines) {
+		if (lines == null) { return; }
+		this.lines = lines;
 	}
 	
 	public void removeLine(final OrderLineItem line) {
