@@ -9,16 +9,16 @@ insert into zipcode (zipcode, city) values
 -- Insert customers
 -- Type: 'CLUB' or 'PRIVATE' 
 insert into customer (phoneno, name, address, zipcode, type) values
-('+4586610000', 'Viborg Square Dance Klub', 'Mathias Gade 12', 8800, 'CLUB'),
-('+4520123456', 'Jens Hansen', 'Aagade 4', 8800, 'PRIVATE'),
-('+4598123456', 'Aalborg Line Dance Club', 'Vesterbro 45', 9000, 'CLUB'),
-('+4530876543', 'Mette Jensen', 'Haraldsgade 8', 8000, 'PRIVATE');
+('86610000', 'Viborg Square Dance Klub', 'Mathias Gade 12', 8800, 'CLUB'),
+('20123456', 'Jens Hansen', 'Aagade 4', 8800, 'PRIVATE'),
+('98123456', 'Aalborg Line Dance Club', 'Vesterbro 45', 9000, 'CLUB'),
+('30876543', 'Mette Jensen', 'Haraldsgade 8', 8000, 'PRIVATE');
 
 -- Insert saleOrders
 insert into saleOrder (cust_phoneno_id, date, deliveryStatus, deliveryDate, discountGiven) values
-('+4586610000', '2023-10-01', 'Dispatched', '2023-10-03', 10),
-('+4520123456', '2023-10-02', 'Delivered', '2023-10-04', 0),
-('+4598123456', '2023-10-05', 'Pending', '2023-10-08', 15);
+('86610000', '2023-10-01', 'Dispatched', '2023-10-03', 10),
+('20123456', '2023-10-02', 'Delivered', '2023-10-04', 0),
+('98123456', '2023-10-05', 'Pending', '2023-10-08', 15);
 
 -- Insert freight
 insert into freight (method, baseCost, freeThreshold,orderNo_id) values
