@@ -17,7 +17,7 @@ import model.OrderLineItem;
 class OrderControllerTest {
 
     private static final int PRODUCT_NO = 1001; 
-    private static final int STOCK = 5;
+    private static final int STOCK = 4;
 
     private OrderController orderController;
 

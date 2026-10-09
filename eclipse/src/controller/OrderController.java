@@ -47,18 +47,19 @@ public class OrderController {
     	
     	return this.currentProduct;
     }
-
+    
     public OrderLineItem enterQuantity(int qty) throws DataAccessException {
         if (this.currentProduct == null || this.currentOrder == null) {
             return null;
         }
+        
         if (qty < 0) {
             throw new IllegalArgumentException("Quantity (" + qty + ") must be greater than 0");
         }
-        if (qty > this.currentProduct.getReservedStock()) {
+        if (qty > this.currentProduct.getReservedStock() ) {
             throw new IllegalArgumentException("Quantity exceeds available stock");
         }
-
+        
         Price price = productCtrl.getCurrentPrice(this.currentProduct);
         double unitPrice = price != null ? price.getPrice() : 0.0;
 

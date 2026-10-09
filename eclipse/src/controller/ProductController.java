@@ -23,7 +23,7 @@ public class ProductController {
     }
 
     public boolean reserve(Product p, int qty) throws DataAccessException {
-    	p.setReservedStock(p.getReservedStock() + qty);
+    	p.setReservedStock(qty);
         productDAO.updateReservedStock(p);
         return true;
     }
