@@ -2,7 +2,7 @@ package model;
 
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.List;
 
 public class SaleOrder {
@@ -12,10 +12,10 @@ public class SaleOrder {
     private LocalDate deliveryDate;
     private double discount;
     private Customer customer;
-    private ArrayList<OrderLineItem> lines;
+    private List<OrderLineItem> lines;
     private Invoice invoice;
     
-    public SaleOrder(final LocalDate date, final String status, final double discount, final ArrayList<OrderLineItem> lines) {
+    public SaleOrder(final LocalDate date, final String status, final double discount, final List<OrderLineItem> lines) {
         setDate(date);
         setStatus(status);
         setDiscount(discount);
@@ -29,7 +29,6 @@ public class SaleOrder {
     	this.deliveryDate = deliveryDate;
     	this.discount = discount;
     	this.customer = customer;
-    	this.lines = new ArrayList<OrderLineItem>();
     }
     
 	public void setDate(final LocalDate date) 				{ this.date = date; 					}
@@ -50,7 +49,7 @@ public class SaleOrder {
 	public Customer getCustomer() 			{ return customer; 	  			}
     public Invoice getInvoice()				{ return invoice;	  			}
 	
-	public void setLines(final ArrayList<OrderLineItem> lines) {
+	public void setLines(final List<OrderLineItem> lines) {
 		if (lines == null) { return; }
 		this.lines = lines;
 	}
